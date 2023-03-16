@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleCheck } from '@fortawesome/free-regular-svg-icons';
+import Navbar from './components/Navbar/navbar';
+import Intro from './components/Intro/Intro';
+import Menu from './components/Menu/Menu';
+import Contents from './components/Contents/Contents';
+import MovieDetail from './components/MovieDetail/MovieDetail';
+import { useSelector } from 'react-redux';
+import MovieSearch from './components/MovieSearch/MovieSearch';
+
 
 function App() {
+  const { movieDetail } = useSelector(state => state.infoMovies);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Menu />
+      <Intro />
+      <Contents/>
+      <MovieDetail movie={movieDetail} showModal={movieDetail ? true : false}/>
+      {/* <MovieSearch /> */}
     </div>
   );
 }
